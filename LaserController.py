@@ -234,13 +234,13 @@ class Laser:
         print(f"PARAMETERS: Burst quantity: {self.burst_quantity}, Frequency: {self.frequency} Hz, HV: {self.hv}%, Transmission percentage: {self.transmission_percentage}%")
         print(f"METRICS: Last energy: {self.last_energy} uJ, Supply voltage: {self.supply_voltage} V, Temp1: {self.temp1} C, Temp2: {self.temp2} C, Total shot counter: {self.total_shot_counter}\n\n")
 
-laser = Laser("COM26")
+laser = Laser("COM3")
 
 # turn on laser
 laser.laser_on()
 time.sleep(10)
 laser.set_hv(100)
-laser.set_freq(5)
+laser.set_freq(2)
 laser.set_transmission_percentage(100)
 laser.open_shutter()
 laser.set_rep_on()
