@@ -16,6 +16,7 @@ class ScopeTrace:
 class DSOX2004A:
     def __init__(self, resource: str | None = None, timeout_ms: int = 1000):
         self.rm = pyvisa.ResourceManager("@py")
+        print(self.rm.list_resources())
         if resource is None:
             resources = self.rm.list_resources()
             if not resources:
@@ -237,6 +238,6 @@ def test_impulse_response(scope: DSOX2004A):
     for m in ch1.v:
         print(m)
 
-test_impulse_response(scope)
+#test_impulse_response(scope)
 
 
