@@ -1,6 +1,6 @@
 data = readmatrix("./scope captures/pure impulse response averaged.csv");
 
-signal = readmatrix("./scope captures/pure laser response.csv");
+signal = readmatrix("./scope captures/beamdumpvsnobeamdump.csv");
 
 s = signal(:,2);
 s2 = signal(:,3);
@@ -38,16 +38,16 @@ s2 = s2 ./ max(abs(s2)) + 1;
 %nb = 7;   % zeros
 
 na = 4;   % poles
-nb = 5;   % zeros
+nb = 4;   % zeros
 
 [b,a] = prony(y, nb, na);
 
 H = tf(b,a)
-figure(1);
-pzmap(H)
-zgrid
+%figure(1);
+%pzmap(H)
+%zgrid
 %grid on
-rlocus(H)
+%rlocus(H)
 
 hfit = impz(b,a,length(y));
 
@@ -83,21 +83,24 @@ function x_est = inverse_filter_regularised(y, b, a, lambda)
     x_est = x_full(1:N);
 end
 
-lambda = 1e-1;
-x_est = inverse_filter_regularised(y, b, a, lambda);
+lambda = 0.1;
+x_est = inverse_filter_regularised(s, b, a, lambda);
 x_est2 = inverse_filter_regularised(s2, b, a, lambda);
 
+%{
 figure(2);
 plot(t,y,'o')
 hold on
 plot(t,hfit)
-plot(t,x_est)
+plot(ts,x_est)
+%}
 
 figure(3);
 hold on;
-%plot(ts, s);
+plot(ts, s);
 plot(ts, s2);
-%plot(ts, x_est.*2)
-plot(ts, x_est2.*2)
+plot(ts, x_est.*2);
+plot(ts, x_est2.*2);
+ax = gca;
+ax.XAxis.Exponent = -9; 
 grid on
-legend('Measured','Prony fit')
