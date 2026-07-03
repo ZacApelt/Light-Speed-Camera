@@ -113,7 +113,7 @@ def home():
 
 def trigger_scope():
     trigger.value(1)
-    time.sleep_us(100)
+    time.sleep(0.1)
     trigger.value(0)
 
 #home()
