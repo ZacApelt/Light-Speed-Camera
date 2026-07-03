@@ -37,8 +37,11 @@ s2 = s2 ./ max(abs(s2)) + 1;
 %na = 4;   % poles
 %nb = 7;   % zeros
 
-na = 4;   % poles
-nb = 4;   % zeros
+%na = 10;   % poles
+%nb = 5;   % zeros
+
+na = 7;   % poles
+nb = 5;   % zeros
 
 [b,a] = prony(y, nb, na);
 
@@ -83,7 +86,7 @@ function x_est = inverse_filter_regularised(y, b, a, lambda)
     x_est = x_full(1:N);
 end
 
-lambda = 0.1;
+lambda = 0.05;
 x_est = inverse_filter_regularised(s, b, a, lambda);
 x_est2 = inverse_filter_regularised(s2, b, a, lambda);
 
