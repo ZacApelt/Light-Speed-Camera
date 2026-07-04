@@ -112,7 +112,7 @@ def home():
     current_position_mm = (RIGHT_LIMIT_MM, LOWER_LIMIT_MM)  # Reset position after homing
 
 def trigger_scope():
-    time.sleep(0.1)
+    time.sleep(0.05)
     trigger.value(1)
     time.sleep(0.001)
     trigger.value(0)
