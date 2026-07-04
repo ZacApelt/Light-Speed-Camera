@@ -224,17 +224,20 @@ class Laser:
             self.energies.append(energy_value)
     
     def display_useful_status(self):
-        laser.get_short_status()
-        laser.get_full_status()
-        laser.get_version_info()
-        laser.get_attenuator_status()
-        laser.get_energy_values()
+        try:
+            laser.get_short_status()
+            laser.get_full_status()
+            laser.get_version_info()
+            laser.get_attenuator_status()
+            laser.get_energy_values()
 
-        #print(f"\nLASER MODE: Laser on: {self.las_on}, Laser working: {self.las_working}, Laser ready: {self.las_ready}, Laser mode: {self.las_mode}")
-        print(f"PARAMETERS: Burst quantity: {self.burst_quantity}, Frequency: {self.frequency} Hz, HV: {self.hv}%, Transmission percentage: {self.transmission_percentage}%")
-        print(f"METRICS: Last energy: {self.last_energy} uJ, Supply voltage: {self.supply_voltage} V, Temp1: {self.temp1} C, Temp2: {self.temp2} C, Total shot counter: {self.total_shot_counter}\n\n")
-
-laser = Laser("COM5")
+            #print(f"\nLASER MODE: Laser on: {self.las_on}, Laser working: {self.las_working}, Laser ready: {self.las_ready}, Laser mode: {self.las_mode}")
+            print(f"PARAMETERS: Burst quantity: {self.burst_quantity}, Frequency: {self.frequency} Hz, HV: {self.hv}%, Transmission percentage: {self.transmission_percentage}%")
+            print(f"METRICS: Last energy: {self.last_energy} uJ, Supply voltage: {self.supply_voltage} V, Temp1: {self.temp1} C, Temp2: {self.temp2} C, Total shot counter: {self.total_shot_counter}\n\n")
+        except Exception as e:
+            print("Error displaying useful status:", e)
+            
+laser = Laser("COM3")
 
 # turn on laser
 laser.laser_on()
