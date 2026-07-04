@@ -236,7 +236,7 @@ class Laser:
             print(f"METRICS: Last energy: {self.last_energy} uJ, Supply voltage: {self.supply_voltage} V, Temp1: {self.temp1} C, Temp2: {self.temp2} C, Total shot counter: {self.total_shot_counter}\n\n")
         except Exception as e:
             print("Error displaying useful status:", e)
-            
+
 laser = Laser("COM3")
 
 # turn on laser
