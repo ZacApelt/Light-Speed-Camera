@@ -117,19 +117,19 @@ def trigger_scope():
     time.sleep(0.001)
     trigger.value(0)
 
-home()
-while True:
-   print("current_position_deg:", current_position_deg)
+# home()
+# while True:
+#    print("current_position_deg:", current_position_deg)
    
-   #move_to_position(0, new_y)
-   new_x = float(input("Enter new x position (deg): "))
-   new_y = float(input("Enter new y position (deg): "))
-   move_to_position(new_x, new_y)
+#    #move_to_position(0, new_y)
+#    new_x = float(input("Enter new x position (deg): "))
+#    new_y = float(input("Enter new y position (deg): "))
+#    move_to_position(new_x, new_y)
 
-#move_to_position(-20, 20)
+# #move_to_position(-20, 20)
 
-while True:
-    time.sleep(0.1)
+# while True:
+#     time.sleep(0.1)
 
 
 spoll = uselect.poll()
